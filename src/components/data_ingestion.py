@@ -9,6 +9,8 @@ from src.exception import CustomException
 from src.logger import logging
 from src.components.data_transformation import DataTransformation
 
+from src.utils import save_object
+from src.components.model_trainer import ModelTrainerConfig, ModelTrainer
 
 # ==============================
 # CONFIG CLASS
@@ -90,11 +92,17 @@ if __name__ == "__main__":
         # Data Transformation
         data_transformation = DataTransformation()
 
-        train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation(
+        train_arr, test_arr,_ = data_transformation.initiate_data_transformation(
             train_path, test_path
         )
 
         logging.info("Data transformation completed")
 
+        modeltrainer = ModelTrainer()
+        print(modeltrainer.initiate_model_trainer(
+            train_array=train_arr,
+            test_array=test_arr
+        ))
+        logging.info("Model training completed")
     except Exception as e:
         raise CustomException(e, sys)
