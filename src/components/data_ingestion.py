@@ -12,9 +12,9 @@ from src.components.data_transformation import DataTransformation
 from src.utils import save_object
 from src.components.model_trainer import ModelTrainerConfig, ModelTrainer
 
-# ==============================
+
 # CONFIG CLASS
-# ==============================
+
 @dataclass
 class DataIngestionConfig:
     train_data_path: str = os.path.join("artifacts", "train.csv")
@@ -22,9 +22,9 @@ class DataIngestionConfig:
     raw_data_path: str = os.path.join("artifacts", "data.csv")
 
 
-# ==============================
+
 # DATA INGESTION CLASS
-# ==============================
+
 class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
@@ -75,9 +75,9 @@ class DataIngestion:
             raise CustomException(e, sys)
 
 
-# ==============================
+
 # MAIN PIPELINE EXECUTION
-# ==============================
+
 if __name__ == "__main__":
     try:
         ingestion = DataIngestion()
@@ -101,8 +101,8 @@ if __name__ == "__main__":
         modeltrainer = ModelTrainer()
         print(modeltrainer.initiate_model_trainer(
             train_array=train_arr,
-            test_array=test_arr
+            test_array=test_arr,
         ))
         logging.info("Model training completed")
     except Exception as e:
-        raise CustomException(e, sys)
+        raise CustomException(e,sys)
