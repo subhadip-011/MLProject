@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Predictor</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        .login {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input, select {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        .btn {
+            background: blue;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<div class="login">
+
+    <h1>Student Exam Performance Indicator</h1>
+
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+
+        <h2>Prediction Form</h2>
+
+        <!-- Gender -->
+        <select name="gender" required>
+            <option disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <!-- Ethnicity -->
+        <select name="ethnicity" required>
+            <option disabled selected>Select Ethnicity</option>
+            <option value="group A">Group A</option>
+            <option value="group B">Group B</option>
+            <option value="group C">Group C</option>
+            <option value="group D">Group D</option>
+            <option value="group E">Group E</option>
+        </select>
+
+        <!-- Parent Education -->
+        <select name="parental_level_of_education" required>
+            <option disabled selected>Select Parent Education</option>
+            <option value="associate's degree">Associate's degree</option>
+            <option value="bachelor's degree">Bachelor's degree</option>
+            <option value="high school">High school</option>
+            <option value="master's degree">Master's degree</option>
+            <option value="some college">Some college</option>
+            <option value="some high school">Some high school</option>
+        </select>
+
+        <!-- Lunch -->
+        <select name="lunch" required>
+            <option disabled selected>Select Lunch</option>
+            <option value="free/reduced">Free/Reduced</option>
+            <option value="standard">Standard</option>
+        </select>
+
+        <!-- Course -->
+        <select name="test_preparation_course" required>
+            <option disabled selected>Select Course</option>
+            <option value="none">None</option>
+            <option value="completed">Completed</option>
+        </select>
+
+        <!-- FIXED INPUTS -->
+        <input type="number" name="reading_score" placeholder="Enter Reading Score" min="0" max="100" required>
+
+        <input type="number" name="writing_score" placeholder="Enter Writing Score" min="0" max="100" required>
+
+        <input class="btn" type="submit" value="Predict Maths Score">
+
+    </form>
+
+    <h2>Prediction: {{ results }}</h2>
+
+</div>
+</body>
+</html>

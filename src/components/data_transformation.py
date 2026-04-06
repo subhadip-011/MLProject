@@ -15,17 +15,17 @@ from src.exception import CustomException
 from src.logger import logging
 
 
-# ==============================
+
 # CONFIG CLASS
-# ==============================
+
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join("artifacts", "preprocessor.pkl")
 
 
-# ==============================
+
 # MAIN TRANSFORMATION CLASS
-# ==============================
+
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
@@ -78,9 +78,9 @@ class DataTransformation:
         except Exception as e:
             raise CustomException(e, sys)
 
-    # ==============================
+    
     # APPLY TRANSFORMATION
-    # ==============================
+    
     def initiate_data_transformation(self, train_path, test_path):
         try:
             # Load data
